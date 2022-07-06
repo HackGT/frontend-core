@@ -1,0 +1,106 @@
+import React from "react";
+import {
+  Box,
+  chakra,
+  Container,
+  CloseButton,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+  IconButton,
+  HStack,
+  Image,
+  Stack,
+  useDisclosure,
+} from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import { HexlabsLogo } from"./HexlabsLogo";
+
+const NavbarContainer = chakra(Container, {
+  baseStyle: {
+    position: "sticky",
+    top: 0,
+    zIndex: 100,
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+    height: "64px",
+    px: "30px",
+    bg: "white",
+    boxShadow: "0 3px 4px 0 rgba(0, 0, 0, 8%)",
+  },
+});
+
+const SidebarContainer = chakra(Stack, {
+  baseStyle: {
+    textAlign: "center",
+    fontSize: "18px",
+  },
+});
+
+interface Props {
+  children: React.ReactNode[];
+}
+
+const Navbar: React.FC<Props> = (props: Props) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  return (
+    <>
+      <NavbarContainer as="header">
+        <IconButton
+          ml={-5}
+          display={{ base: "flex", md: "none" }}
+          onClick={onOpen}
+          icon={<HamburgerIcon w={5} h={5} />}
+          variant="ghost"
+          aria-label="Toggle Navigation"
+        />
+        <HexlabsLogo />
+        <Box>
+          <HStack spacing={10} display={{ base: "none", md: "block" }}>
+            {props.children}
+          </HStack>
+          <HStack spacing={10} display={{ base: "block", md: "none" }}>
+            {props.children?.map((child: any) => child?.props?.show ? child : null)}
+          </HStack>
+        </Box>
+      </NavbarContainer>
+      <Drawer
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        autoFocus={false}
+        returnFocusOnClose={false}
+        closeOnOverlayClick
+        closeOnEsc
+      >
+        <DrawerOverlay/>
+        <DrawerContent>
+          <DrawerHeader>
+            <Box
+              display="flex"
+              ml="12"
+              h="20"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <HexlabsLogo />
+              <CloseButton onClick={onClose} />
+            </Box>
+          </DrawerHeader>
+          <DrawerBody>
+            <SidebarContainer>
+              {props.children}
+            </SidebarContainer>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </>
+  );
+};
+
+export default Navbar;

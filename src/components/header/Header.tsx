@@ -3,7 +3,6 @@ import {
   Box,
   chakra,
   Container,
-  ChakraProvider,
   CloseButton,
   Drawer,
   DrawerBody,
@@ -49,7 +48,7 @@ const Header: React.FC<Props> = (props: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <ChakraProvider>
+    <>
       <NavbarContainer as="header">
         <IconButton
           ml={-5}
@@ -105,7 +104,7 @@ const Header: React.FC<Props> = (props: Props) => {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
-    </ChakraProvider>
+    </>
   );
 };
 

@@ -9,7 +9,7 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
-    "rollup": "rollup -c",
+    "build": "rollup -c",
     "release": "standard-version",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"

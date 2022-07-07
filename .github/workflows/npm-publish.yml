@@ -1,0 +1,28 @@
+name: Publish packages to NPM
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  npm-publish:
+    name: Publish packages to NPM
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Use Node 14
+        uses: actions/setup-node@v3
+        with:
+          node-version: "14.x"
+          registry-url: "https://registry.npmjs.org"
+          always-auth: true
+          scope: "@hex-labs"
+      - name: Install dependencies with yarn
+        run: yarn install --frozen-lockfile
+      - name: Build components
+        run: yarn build
+      - name: Publish components
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ SECRETS.NPM_TOKEN }}

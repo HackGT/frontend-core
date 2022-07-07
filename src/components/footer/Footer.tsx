@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ButtonGroup, Container, IconButton, Stack, Box, Text, } from '@chakra-ui/react';
+import { ButtonGroup, ChakraProvider, Container, IconButton, Stack, Box, Text, } from '@chakra-ui/react';
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitter, FaGlobe, } from 'react-icons/fa';
 import { IconType } from 'react-icons';
 
@@ -25,28 +25,30 @@ const SocialMediaList = [
 ]
 
 const Footer: React.FC = () => (
-  <Container as="footer" textAlign="center" paddingTop={14} paddingBottom={12}>
-    <Stack spacing="5">
-      <Stack justifyContent="center" direction="row" align="center">
-        <ButtonGroup variant="ghost">
-          {SocialMediaList.map((socialmedia: SocialMedia) => (
-            <IconButton
-              key={socialmedia.name}
-              isRound
-              as="a"
-              href={socialmedia.link}
-              aria-label={socialmedia.name}
-              icon={<socialmedia.icon fontSize="1.25rem" />}
-            />
-          ))}
-        </ButtonGroup>
+  <ChakraProvider>
+    <Container as="footer" textAlign="center" paddingTop={14} paddingBottom={12}>
+      <Stack spacing="5">
+        <Stack justifyContent="center" direction="row" align="center">
+          <ButtonGroup variant="ghost">
+            {SocialMediaList.map((socialmedia: SocialMedia) => (
+              <IconButton
+                key={socialmedia.name}
+                isRound
+                as="a"
+                href={socialmedia.link}
+                aria-label={socialmedia.name}
+                icon={<socialmedia.icon fontSize="1.25rem" />}
+              />
+            ))}
+          </ButtonGroup>
+        </Stack>
+        <Box fontSize="14px" color="rgba(100, 100, 100, 0.7)">
+          <Text>Made with ♡ by HexLabs</Text>
+          <Text>&copy; {new Date().getFullYear()} HexLabs. All rights reserved.</Text>
+        </Box>
       </Stack>
-      <Box fontSize="14px" color="rgba(100, 100, 100, 0.7)">
-        <Text>Made with ♡ by HexLabs</Text>
-        <Text>&copy; {new Date().getFullYear()} HexLabs. All rights reserved.</Text>
-      </Box>
-    </Stack>
-  </Container>
+    </Container>
+  </ChakraProvider>
 );
 
 export default Footer;

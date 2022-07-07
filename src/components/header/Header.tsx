@@ -3,6 +3,7 @@ import {
   Box,
   chakra,
   Container,
+  ChakraProvider,
   CloseButton,
   Drawer,
   DrawerBody,
@@ -11,7 +12,6 @@ import {
   DrawerOverlay,
   IconButton,
   HStack,
-  Image,
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -42,14 +42,14 @@ const SidebarContainer = chakra(Stack, {
 });
 
 export interface Props {
-  children: React.ReactNode[];
+  children: React.ReactNode[] | React.ReactNode;
 }
 
 const Header: React.FC<Props> = (props: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <>
+    <ChakraProvider>
       <NavbarContainer as="header">
         <IconButton
           ml={-5}
@@ -65,9 +65,15 @@ const Header: React.FC<Props> = (props: Props) => {
             {props.children}
           </HStack>
           <HStack spacing={10} display={{ base: "block", md: "none" }}>
-            {props.children?.map((child: any) =>
-              child?.props?.show ? child : null
-            )}
+            {
+              Array.isArray(props.children) ? (
+                props.children?.map((child: any) =>
+                  child?.props?.show ? child : null
+                )
+              ) : (
+                props.children
+              )
+            }
           </HStack>
         </Box>
       </NavbarContainer>
@@ -99,7 +105,7 @@ const Header: React.FC<Props> = (props: Props) => {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
-    </>
+    </ChakraProvider>
   );
 };
 

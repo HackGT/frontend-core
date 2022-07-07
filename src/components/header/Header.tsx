@@ -16,7 +16,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { HexlabsLogo } from"./HexlabsLogo";
+import HexLabsLogo from "./HexLabsLogo";
 
 const NavbarContainer = chakra(Container, {
   baseStyle: {
@@ -41,11 +41,11 @@ const SidebarContainer = chakra(Stack, {
   },
 });
 
-interface Props {
+export interface Props {
   children: React.ReactNode[];
 }
 
-const Navbar: React.FC<Props> = (props: Props) => {
+const Header: React.FC<Props> = (props: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -59,13 +59,15 @@ const Navbar: React.FC<Props> = (props: Props) => {
           variant="ghost"
           aria-label="Toggle Navigation"
         />
-        <HexlabsLogo />
+        <HexLabsLogo />
         <Box>
           <HStack spacing={10} display={{ base: "none", md: "block" }}>
             {props.children}
           </HStack>
           <HStack spacing={10} display={{ base: "block", md: "none" }}>
-            {props.children?.map((child: any) => child?.props?.show ? child : null)}
+            {props.children?.map((child: any) =>
+              child?.props?.show ? child : null
+            )}
           </HStack>
         </Box>
       </NavbarContainer>
@@ -78,7 +80,7 @@ const Navbar: React.FC<Props> = (props: Props) => {
         closeOnOverlayClick
         closeOnEsc
       >
-        <DrawerOverlay/>
+        <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader>
             <Box
@@ -88,14 +90,12 @@ const Navbar: React.FC<Props> = (props: Props) => {
               alignItems="center"
               justifyContent="space-between"
             >
-              <HexlabsLogo />
+              <HexLabsLogo />
               <CloseButton onClick={onClose} />
             </Box>
           </DrawerHeader>
           <DrawerBody>
-            <SidebarContainer>
-              {props.children}
-            </SidebarContainer>
+            <SidebarContainer>{props.children}</SidebarContainer>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
@@ -103,4 +103,4 @@ const Navbar: React.FC<Props> = (props: Props) => {
   );
 };
 
-export default Navbar;
+export default Header;

@@ -1,4 +1,4 @@
-export { default as Footer } from "./components/Footer";
-export { HexlabsLogo } from "./components/HexlabsLogo";
-export { default as Navbar } from "./components/Navbar";
-export { default as NavbarItem } from "./components/NavbarItem";
+export { default as Footer } from "./components/footer/Footer";
+export { default as HexlabsLogo } from "./components/header/HexLabsLogo";
+export { default as Navbar } from "./components/header/Header";
+export { default as NavbarItem } from "./components/header/NavbarItem";

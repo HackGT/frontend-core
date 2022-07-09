@@ -63,6 +63,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@chakra-ui/storybook-addon": "^4.0.1"
+    "@chakra-ui/storybook-addon": "^4.0.1",
+    "@rollup/plugin-babel": "^5.3.1"
   }
 }

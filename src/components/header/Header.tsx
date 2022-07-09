@@ -1,8 +1,6 @@
 import React from "react";
 import {
   Box,
-  chakra,
-  Container,
   CloseButton,
   Drawer,
   DrawerBody,
@@ -17,29 +15,6 @@ import {
 import { HamburgerIcon } from "@chakra-ui/icons";
 import HexLabsLogo from "./HexLabsLogo";
 
-const NavbarContainer = chakra(Container, {
-  baseStyle: {
-    position: "sticky",
-    top: 0,
-    zIndex: 100,
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-    height: "64px",
-    px: "30px",
-    bg: "white",
-    boxShadow: "0 3px 4px 0 rgba(0, 0, 0, 8%)",
-  },
-});
-
-const SidebarContainer = chakra(Stack, {
-  baseStyle: {
-    textAlign: "center",
-    fontSize: "18px",
-  },
-});
-
 export interface Props {
   children: React.ReactNode[] | React.ReactNode;
 }
@@ -49,7 +24,19 @@ const Header: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      <NavbarContainer as="header">
+      <Box
+        as="header"
+        position="sticky"
+        top={0}
+        zIndex={100}
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        height="64px"
+        px="30px"
+        bg="white"
+        boxShadow="0 3px 4px 0 rgba(0, 0, 0, 8%)"
+      >
         <IconButton
           ml={-5}
           display={{ base: "flex", md: "none" }}
@@ -75,7 +62,7 @@ const Header: React.FC<Props> = (props: Props) => {
             }
           </HStack>
         </Box>
-      </NavbarContainer>
+      </Box>
       <Drawer
         isOpen={isOpen}
         placement="left"
@@ -100,7 +87,12 @@ const Header: React.FC<Props> = (props: Props) => {
             </Box>
           </DrawerHeader>
           <DrawerBody>
-            <SidebarContainer>{props.children}</SidebarContainer>
+            <Stack
+              textAlign="center"
+              fontSize="18px"
+            >
+              {props.children}
+            </Stack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>

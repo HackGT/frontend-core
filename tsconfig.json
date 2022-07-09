@@ -14,5 +14,10 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
-  }
+  },
+  "exclude": [
+    "dist/**",
+    "node_modules/**",
+    "src/**/**/*.stories.tsx",
+  ],
 }

@@ -41,71 +41,70 @@ const SidebarContainer = chakra(Stack, {
 });
 
 export interface Props {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
   children: React.ReactNode[] | React.ReactNode;
 }
 
-const Header: React.FC<Props> = (props: Props) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  return (
-    <>
-      <NavbarContainer as="header">
-        <IconButton
-          ml={-5}
-          display={{ base: "flex", md: "none" }}
-          onClick={onOpen}
-          icon={<HamburgerIcon w={5} h={5} />}
-          variant="ghost"
-          aria-label="Toggle Navigation"
-        />
-        <HexLabsLogo />
-        <Box>
-          <HStack spacing={10} display={{ base: "none", md: "block" }}>
-            {props.children}
-          </HStack>
-          <HStack spacing={10} display={{ base: "block", md: "none" }}>
-            {
-              Array.isArray(props.children) ? (
-                props.children?.map((child: any) =>
-                  child?.props?.show ? child : null
-                )
-              ) : (
-                props.children
+const Header: React.FC<Props> = (props: Props) => (
+  <>
+    <NavbarContainer as="header">
+      <IconButton
+        ml={-5}
+        display={{ base: "flex", md: "none" }}
+        onClick={props.onOpen}
+        icon={<HamburgerIcon w={5} h={5} />}
+        variant="ghost"
+        aria-label="Toggle Navigation"
+      />
+      <HexLabsLogo />
+      <Box>
+        <HStack spacing={10} display={{ base: "none", md: "block" }}>
+          {props.children}
+        </HStack>
+        <HStack spacing={10} display={{ base: "block", md: "none" }}>
+          {
+            Array.isArray(props.children) ? (
+              props.children?.map((child: any) =>
+                child?.props?.show ? child : null
               )
-            }
-          </HStack>
-        </Box>
-      </NavbarContainer>
-      <Drawer
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        autoFocus={false}
-        returnFocusOnClose={false}
-        closeOnOverlayClick
-        closeOnEsc
-      >
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerHeader>
-            <Box
-              display="flex"
-              ml="12"
-              h="20"
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <HexLabsLogo />
-              <CloseButton onClick={onClose} />
-            </Box>
-          </DrawerHeader>
-          <DrawerBody>
-            <SidebarContainer>{props.children}</SidebarContainer>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
-    </>
-  );
-};
+            ) : (
+              props.children
+            )
+          }
+        </HStack>
+      </Box>
+    </NavbarContainer>
+    <Drawer
+      isOpen={props.isOpen}
+      placement="left"
+      onClose={props.onClose}
+      autoFocus={false}
+      returnFocusOnClose={false}
+      closeOnOverlayClick
+      closeOnEsc
+    >
+      <DrawerOverlay />
+      <DrawerContent>
+        <DrawerHeader>
+          <Box
+            display="flex"
+            ml="12"
+            h="20"
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            <HexLabsLogo />
+            <CloseButton onClick={props.onClose} />
+          </Box>
+        </DrawerHeader>
+        <DrawerBody>
+          <SidebarContainer>{props.children}</SidebarContainer>
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
+  </>
+);
 
 export default Header;

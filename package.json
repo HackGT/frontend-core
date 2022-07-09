@@ -1,6 +1,6 @@
 {
   "name": "@hex-labs/core",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Hexlabs shared custom frontend components for JS/TS projects",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -56,15 +56,8 @@
     "typescript": "^4.7.4"
   },
   "peerDependencies": {
-    "@chakra-ui/icons": "^2.0.2",
-    "@chakra-ui/react": "^2.2.1",
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "framer-motion": "^6.3.16",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0",
-    "react-router-dom": "^6.3.0"
+    "react-dom": "^18.2.0"
   },
   "publishConfig": {
     "access": "public"

@@ -1,6 +1,6 @@
 {
   "name": "@hex-labs/core",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Hexlabs shared custom frontend components for JS/TS projects",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,10 +25,6 @@
   "homepage": "https://github.com/HackGT/frontend-core#readme",
   "devDependencies": {
     "@babel/core": "^7.18.6",
-    "@chakra-ui/icons": "^2.0.2",
-    "@chakra-ui/react": "^2.2.1",
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.3",
@@ -42,11 +38,6 @@
     "@storybook/testing-library": "^0.0.13",
     "@types/react": "^18.0.14",
     "babel-loader": "^8.2.5",
-    "framer-motion": "^6.3.16",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0",
-    "react-router-dom": "^6.3.0",
     "rollup": "^2.75.7",
     "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -54,6 +45,17 @@
     "rollup-plugin-typescript2": "^0.32.1",
     "standard-version": "^9.5.0",
     "typescript": "^4.7.4"
+  },
+  "peerDependencies": {
+    "@chakra-ui/icons": "^2.0.2",
+    "@chakra-ui/react": "^2.2.1",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "framer-motion": "^6.3.16",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
+    "react-router-dom": "^6.3.0"
   },
   "publishConfig": {
     "access": "public"

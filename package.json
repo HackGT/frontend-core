@@ -1,6 +1,6 @@
 {
   "name": "@hex-labs/core",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "Hexlabs shared custom frontend components for JS/TS projects",
   "main": "./dist/cjs/src/index.js",
   "module": "./dist/esm/src/index.js",

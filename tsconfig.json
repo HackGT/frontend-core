@@ -15,9 +15,6 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
   },
-  "include": [
-    "src/**"
-  ],
   "exclude": [
     "dist",
     "node_modules",

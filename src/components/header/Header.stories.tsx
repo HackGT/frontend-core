@@ -1,5 +1,5 @@
 import React from "react";
-import { ChakraProvider, useDisclosure } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -11,30 +11,22 @@ export default {
   component: Header,
 } as ComponentMeta<typeof Header>;
 
-const Template: ComponentStory<typeof Header> = (args) => {
-  const {isOpen, onOpen, onClose} = useDisclosure();
-
-  return (
-    <ChakraProvider>
-      <Router>
-        <Header
-          isOpen={isOpen}
-          onOpen={onOpen}
-          onClose={onClose}
-        >
-          <NavbarItem
-            routeName="Home"
-            routeLink="/"
-          />
-          <NavbarItem
-            routeName="Login"
-            routeLink="/login"
-            show
-          />
-        </Header>
-      </Router>
-    </ChakraProvider>
-  )
-};
+const Template: ComponentStory<typeof Header> = (args) => (
+  <ChakraProvider>
+    <Router>
+      <Header>
+        <NavbarItem
+          routeName="Home"
+          routeLink="/"
+        />
+        <NavbarItem
+          routeName="Login"
+          routeLink="/login"
+          show
+        />
+      </Header>
+    </Router>
+  </ChakraProvider>
+);
 
 export const Original = Template.bind({});

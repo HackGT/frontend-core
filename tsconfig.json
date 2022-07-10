@@ -15,9 +15,12 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
   },
+  "include": [
+    "src/**"
+  ],
   "exclude": [
-    "dist/**",
-    "node_modules/**",
+    "dist",
+    "node_modules",
     "src/**/**/*.stories.tsx",
   ],
 }

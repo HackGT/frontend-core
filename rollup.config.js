@@ -1,42 +1,33 @@
-import babel from "@rollup/plugin-babel";
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import typescript from "@rollup/plugin-typescript";
-import dts from "rollup-plugin-dts";
+import { terser } from "rollup-plugin-terser";
+import typescript from "rollup-plugin-typescript2";
 
-const packageJson = require("./package.json");
+export default {
+  input: "src/index.ts",
+  preserveModules: true,
+  output: [
+    {
+      dir: "./dist/cjs/",
+      format: "cjs",
+      sourcemap: true,
+      exports: "auto",
+    },
+    {
+      dir: "./dist/esm/",
+      format: "esm",
+      sourcemap: true,
+      exports: "auto",
+    },
+  ],
 
-export default [
-  {
-    input: "src/index.ts",
-    output: [
-      {
-        file: packageJson.main,
-        format: "cjs",
-        sourcemap: true,
-      },
-      {
-        file: packageJson.module,
-        format: "esm",
-        sourcemap: true,
-      },
-    ],
-    plugins: [
-      babel({
-        exclude: "node_modules",
-        presets: [
-          '@babel/preset-react',
-          '@babel/preset-typescript'
-        ]
-      }),
-      resolve(),
-      commonjs(),
-      typescript({ tsconfig: "./tsconfig.json" }),
-    ],
-  },
-  {
-    input: "dist/esm/types/index.d.ts",
-    output: [{ file: "dist/index.d.ts", format: "esm" }],
-    plugins: [dts()],
-  },
-];
+  //plugins
+  plugins: [
+    peerDepsExternal(),
+    resolve(),
+    commonjs(),
+    typescript({ useTsconfigDeclarationDir: true }),
+    terser(),
+  ],
+};

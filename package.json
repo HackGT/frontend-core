@@ -2,14 +2,15 @@
   "name": "@hex-labs/core",
   "version": "1.0.16",
   "description": "Hexlabs shared custom frontend components for JS/TS projects",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "main": "./dist/cjs/src/index.js",
+  "module": "./dist/esm/src/index.js",
+  "types": "./dist/index.d.ts",
+  "src": "./src",
   "files": [
-    "dist"
+    "/dist"
   ],
-  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rollup -c",
+    "build": "rm -rf ./dist  && rollup -c",
     "release": "standard-version",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"

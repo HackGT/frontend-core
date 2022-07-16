@@ -2,11 +2,13 @@
   "name": "@hex-labs/core",
   "version": "1.0.21",
   "description": "Hexlabs shared custom frontend components for JS/TS projects",
-  "main": "./dist/cjs/src/index.js",
-  "module": "./dist/esm/src/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "files": [
-    "/dist"
+    "dist",
+    "package.json"
   ],
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf ./dist  && rollup -c",
     "release": "standard-version",
@@ -24,8 +26,10 @@
   "homepage": "https://github.com/HackGT/frontend-core#readme",
   "devDependencies": {
     "@babel/core": "^7.18.6",
-    "@chakra-ui/icons": "^2.0.2",
+    "@chakra-ui/icons": "^2.0.4",
     "@chakra-ui/react": "^2.2.1",
+    "@chakra-ui/storybook-addon": "^4.0.4",
+    "@chakra-ui/system": "^2.2.2",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@rollup/plugin-babel": "^5.3.1",
@@ -36,7 +40,10 @@
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-interactions": "^6.5.9",
     "@storybook/addon-links": "^6.5.9",
+    "@storybook/addons": "^6.5.9",
+    "@storybook/api": "^6.5.9",
     "@storybook/builder-webpack5": "^6.5.9",
+    "@storybook/components": "^6.5.9",
     "@storybook/manager-webpack5": "^6.5.9",
     "@storybook/react": "^6.5.9",
     "@storybook/testing-library": "^0.0.13",
@@ -50,26 +57,21 @@
     "rollup": "^2.75.7",
     "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.32.1",
     "standard-version": "^9.5.0",
     "typescript": "^4.7.4"
   },
   "peerDependencies": {
-    "@chakra-ui/react": "^2.2.1",
-    "@chakra-ui/system": "^2.1.3",
-    "@storybook/addons": "^6.5.9",
-    "@storybook/api": "^6.5.9",
-    "@storybook/components": "^6.5.9"
+    "@chakra-ui/icons": ">=2.0.0",
+    "@chakra-ui/react": ">=2.0.0",
+    "@chakra-ui/system": ">=2.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "@chakra-ui/storybook-addon": "^4.0.1",
-    "@chakra-ui/system": "^2.1.3",
-    "@storybook/addons": "^6.5.9",
-    "@storybook/api": "^6.5.9",
-    "@storybook/components": "^6.5.9"
-  }
+  "dependencies": {}
 }

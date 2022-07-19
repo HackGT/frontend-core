@@ -59,19 +59,15 @@ const Header: React.FC<Props> = (props: Props) => {
         />
         <HexLabsLogo />
         <Box>
-          <HStack spacing={10} display={{ base: "none", md: "block" }}>
+          <HStack spacing={10} display={{ base: "none", md: "flex" }}>
             {props.children}
           </HStack>
-          <HStack spacing={10} display={{ base: "block", md: "none" }}>
-            {
-              Array.isArray(props.children) ? (
-                props.children?.map((child: any) =>
+          <HStack spacing={10} display={{ base: "flex", md: "none" }}>
+            {Array.isArray(props.children)
+              ? props.children?.map((child: any) =>
                   child?.props?.show ? child : null
                 )
-              ) : (
-                props.children
-              )
-            }
+              : props.children}
           </HStack>
         </Box>
       </NavbarContainer>

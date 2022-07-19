@@ -1,10 +1,9 @@
 import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { BrowserRouter as Router } from "react-router-dom";
 
 import Header from "./Header";
-import NavbarItem from "./NavbarItem";
+import HeaderItem from "./HeaderItem";
 
 export default {
   title: "Components/Header",
@@ -13,19 +12,10 @@ export default {
 
 const Template: ComponentStory<typeof Header> = (args) => (
   <ChakraProvider>
-    <Router>
-      <Header>
-        <NavbarItem
-          routeName="Home"
-          routeLink="/"
-        />
-        <NavbarItem
-          routeName="Login"
-          routeLink="/login"
-          show
-        />
-      </Header>
-    </Router>
+    <Header>
+      <HeaderItem>Home</HeaderItem>
+      <HeaderItem show>Login</HeaderItem>
+    </Header>
   </ChakraProvider>
 );
 

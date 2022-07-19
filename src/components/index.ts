@@ -1,3 +1,3 @@
 export { default as Footer } from "./footer/Footer";
-export { default as Navbar } from "./header/Header";
-export { default as NavbarItem } from "./header/NavbarItem";
+export { default as Header } from "./header/Header";
+export { default as HeaderItem } from "./header/HeaderItem";

@@ -72,5 +72,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {}
+  "dependencies": {
+    "storybook": "^6.5.9"
+  }
 }

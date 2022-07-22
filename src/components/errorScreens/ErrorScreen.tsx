@@ -1,14 +1,12 @@
 import * as React from "react";
 import { Box, Button, Center, Flex, Text, Icon } from "@chakra-ui/react";
 import { MdSettings } from "react-icons/md";
-import { useNavigate } from 'react-router-dom';
 
 interface Props {
   error: Error | undefined;
 }
 
 const ErrorScreen: React.FC<Props> = props => {
-  const navigate = useNavigate();
   return (
   <Box p="5" borderWidth="1px">
     <Center>

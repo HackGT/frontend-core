@@ -1,10 +1,9 @@
 import * as React from "react";
 import { Box, Button, Center, Flex, Text, Icon } from "@chakra-ui/react";
 import { MdSettings } from "react-icons/md";
-import { useNavigate } from 'react-router-dom';
+
 
 const NotFoundScreen: React.FC = () => {
-  const navigate = useNavigate();
   return (
   <Box p="5" borderWidth="1px">
     <Center>

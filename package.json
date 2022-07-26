@@ -71,9 +71,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "react-router-dom": "^6.3.0",
-    "storybook": "^6.5.9"
   }
 }

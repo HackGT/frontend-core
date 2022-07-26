@@ -5,13 +5,13 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ErrorScreen from "./ErrorScreen";
 
 export default {
-  title: "Components/errorScreens",
+  title: "Components/Error Screen",
   component: ErrorScreen,
 } as ComponentMeta<typeof ErrorScreen>;
 
 const Template: ComponentStory<typeof ErrorScreen> = (args) => (
   <ChakraProvider>
-    <ErrorScreen  {...args} />
+    <ErrorScreen {...args} />
   </ChakraProvider>
 );
 

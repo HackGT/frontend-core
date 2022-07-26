@@ -2,16 +2,16 @@ import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import NotFoundScreen from "./NotFoundScreen";
+import LoadingScreen from "./LoadingScreen";
 
 export default {
-  title: "Components/Not Found Screen",
-  component: NotFoundScreen,
-} as ComponentMeta<typeof NotFoundScreen>;
+  title: "Components/Loading Screen",
+  component: LoadingScreen,
+} as ComponentMeta<typeof LoadingScreen>;
 
-const Template: ComponentStory<typeof NotFoundScreen> = (args) => (
+const Template: ComponentStory<typeof LoadingScreen> = (args) => (
   <ChakraProvider>
-    <NotFoundScreen />
+    <LoadingScreen />
   </ChakraProvider>
 );
 

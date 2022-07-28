@@ -1,12 +1,14 @@
 import React from "react";
+import { Icon } from "@chakra-ui/react";
 
 const HexLabsLogo = () => (
-  <svg
-    width="145"
-    height="32"
-    viewBox="0 0 145 32"
+  <Icon
+    width="145px"
+    height="32px"
+    viewBox="0px 0px 145px 32px"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    version="1.1"
   >
     <g clipPath="url(#clip0)">
       <path
@@ -68,7 +70,7 @@ const HexLabsLogo = () => (
         />
       </clipPath>
     </defs>
-  </svg>
+  </Icon>
 );
 
 export default HexLabsLogo;

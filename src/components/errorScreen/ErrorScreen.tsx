@@ -2,11 +2,11 @@ import * as React from "react";
 import { Box, Button, Center, Flex, Text } from "@chakra-ui/react";
 import { WarningIcon } from "@chakra-ui/icons";
 
-export interface Props {
+export interface ErrorScreenProps {
   error: Error | undefined;
 }
 
-const ErrorScreen: React.FC<Props> = (props) => {
+const ErrorScreen: React.FC<ErrorScreenProps> = (props) => {
   return (
     <Box p="5" borderWidth="1px">
       <Center>

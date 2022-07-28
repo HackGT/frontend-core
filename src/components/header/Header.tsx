@@ -39,11 +39,11 @@ const SidebarContainer = chakra(Stack, {
   },
 });
 
-export interface Props {
+export interface HeaderProps {
   children: React.ReactNode[] | React.ReactNode;
 }
 
-const Header: React.FC<Props> = (props: Props) => {
+const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (

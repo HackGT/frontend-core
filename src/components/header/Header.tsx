@@ -83,16 +83,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader>
-            <Box
-              display="flex"
-              ml="12"
-              h="20"
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <HexLabsLogo />
-              <CloseButton onClick={onClose} />
-            </Box>
+            <CloseButton w={10} h={10} onClick={onClose} />
           </DrawerHeader>
           <DrawerBody>
             <SidebarContainer>{props.children}</SidebarContainer>

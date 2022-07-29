@@ -1,19 +1,16 @@
 import React from "react";
-import { Icon } from "@chakra-ui/react";
 
 const HexLabsLogo = () => (
-  <Icon
-    width="145px"
-    height="32px"
-    viewBox="0px 0px 145px 32px"
-    fill="none"
+  <svg
+    width="145"
+    height="32"
+    viewBox="0 0 145 32"
     xmlns="http://www.w3.org/2000/svg"
-    version="1.1"
   >
     <g clipPath="url(#clip0)">
       <path
         d="M12.7433 18.2222H7.74285L3.4951 10.6667L7.74285 3.11111H16.234L20.4775 10.6667L14.4865 21.3333L20.4775 32H32.4681L38.459 21.3333L32.4681 10.6667H27.4677L25.7374 13.7778H30.7119L34.9596 21.3333L30.7119 28.8889H22.225L17.9816 21.3333L23.9769 10.6667L17.9816 0H5.9953L0 10.6667L5.9953 21.3333H10.9957L12.7433 18.2222Z"
-        fill="url(#paint0_linear)"
+        fill="url(#gradient1)"
       />
     </g>
     <g clipPath="url(#clip1)">
@@ -48,7 +45,7 @@ const HexLabsLogo = () => (
     </g>
     <defs>
       <linearGradient
-        id="paint0_linear"
+        id="gradient1"
         x1="-4.85614e-07"
         y1="16.0724"
         x2="38.459"
@@ -70,7 +67,7 @@ const HexLabsLogo = () => (
         />
       </clipPath>
     </defs>
-  </Icon>
+  </svg>
 );
 
 export default HexLabsLogo;

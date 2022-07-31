@@ -18,6 +18,7 @@ import {
   Stack,
   useBreakpointValue,
   Text,
+  LinkBox,
 } from "@chakra-ui/react";
 import { FiSearch } from "react-icons/fi";
 import LoadingScreen from "../loadingScreen/LoadingScreen";
@@ -56,7 +57,11 @@ const SearchableTable: React.FC<SearchableTableProps> = (props) => {
   useEffect(() => {
     if (!data) {
       setResultsText("Showing 0 results");
-    } else if (!props.offset || !props.total || data.length === 0) {
+    } else if (
+      props.offset === undefined ||
+      props.total === undefined ||
+      data.length === 0
+    ) {
       setResultsText(`Showing ${data.length} results`);
     } else {
       setResultsText(
@@ -68,13 +73,13 @@ const SearchableTable: React.FC<SearchableTableProps> = (props) => {
   }, [data, props.offset, props.total]);
 
   const hasPrevious = useMemo(() => {
-    if (!props.offset) {
+    if (props.offset === undefined) {
       return false;
     }
     return props.offset && props.offset > 0;
   }, [props.offset]);
   const hasNext = useMemo(() => {
-    if (!props.total || !props.offset || !data) {
+    if (props.offset === undefined || props.total === undefined || !data) {
       return false;
     }
     return props.total > props.offset + data.length;
@@ -116,11 +121,11 @@ const SearchableTable: React.FC<SearchableTableProps> = (props) => {
             </Thead>
             <Tbody>
               {data.map((row) => (
-                <Tr key={row.id}>
+                <LinkBox as={Tr} key={row.id}>
                   {columns.map((column) => (
                     <Td>{column.accessor(row)}</Td>
                   ))}
-                </Tr>
+                </LinkBox>
               ))}
             </Tbody>
           </Table>

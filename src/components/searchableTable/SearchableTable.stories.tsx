@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Link, LinkOverlay } from "@chakra-ui/react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import SearchableTable, { SearchableTableColumn } from "./SearchableTable";
@@ -34,7 +34,7 @@ const columns: SearchableTableColumn[] = [
   {
     key: 0,
     header: "To convert",
-    accessor: (row) => row["fromUnit"],
+    accessor: (row) => <LinkOverlay href="/">row["fromUnit"]</LinkOverlay>,
   },
   {
     key: 1,

@@ -20,6 +20,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { FiSearch } from "react-icons/fi";
+import LoadingScreen from "../loadingScreen/LoadingScreen";
 
 export interface SearchableTableColumn {
   key: React.Key;
@@ -29,14 +30,12 @@ export interface SearchableTableColumn {
 
 export interface SearchableTableProps {
   title: string;
-  data: any[];
+  data?: any[];
   columns: SearchableTableColumn[];
   searchText: string;
   onSearchTextChange: React.ChangeEventHandler<HTMLInputElement>;
   onPreviousClicked?: () => void;
   onNextClicked?: () => void;
-  hasPrevious?: boolean;
-  hasNext?: boolean;
   /** Offset number for results */
   offset?: number;
   /** Total number of results */
@@ -45,12 +44,19 @@ export interface SearchableTableProps {
 
 const SearchableTable: React.FC<SearchableTableProps> = (props) => {
   const isMobile = useBreakpointValue({ base: true, md: false });
-  const data = useMemo(() => props.data, [props.data]);
+  const [data, setData] = useState(props.data);
+  useEffect(() => {
+    if (props.data) {
+      setData(props.data);
+    }
+  }, [props.data]);
   const columns = useMemo(() => props.columns, [props.columns]);
 
   const [resultsText, setResultsText] = useState("Loading...");
   useEffect(() => {
-    if (!props.offset || !props.total || data.length === 0) {
+    if (!data) {
+      setResultsText("Showing 0 results");
+    } else if (!props.offset || !props.total || data.length === 0) {
       setResultsText(`Showing ${data.length} results`);
     } else {
       setResultsText(
@@ -60,6 +66,23 @@ const SearchableTable: React.FC<SearchableTableProps> = (props) => {
       );
     }
   }, [data, props.offset, props.total]);
+
+  const hasPrevious = useMemo(() => {
+    if (!props.offset) {
+      return false;
+    }
+    return props.offset && props.offset > 0;
+  }, [props.offset]);
+  const hasNext = useMemo(() => {
+    if (!props.total || !props.offset || !data) {
+      return false;
+    }
+    return props.total > props.offset + data.length;
+  }, [props.total, props.offset, data]);
+
+  if (!data) {
+    return <LoadingScreen />;
+  }
 
   return (
     <Box bg="bg-surface">
@@ -116,14 +139,14 @@ const SearchableTable: React.FC<SearchableTableProps> = (props) => {
               variant="secondary"
             >
               <Button
-                disabled={!props.hasPrevious}
+                disabled={!hasPrevious}
                 onClick={props.onPreviousClicked}
                 variant="outline"
               >
                 Previous
               </Button>
               <Button
-                disabled={!props.hasNext}
+                disabled={!hasNext}
                 onClick={props.onNextClicked}
                 variant="outline"
               >

@@ -34,7 +34,7 @@ const columns: SearchableTableColumn[] = [
   {
     key: 0,
     header: "To convert",
-    accessor: (row) => <LinkOverlay href="/">row["fromUnit"]</LinkOverlay>,
+    accessor: (row) => <LinkOverlay href="/">{row["fromUnit"]}</LinkOverlay>,
   },
   {
     key: 1,

@@ -71,5 +71,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@storybook/addon-docs": "^6.5.9"
   }
 }

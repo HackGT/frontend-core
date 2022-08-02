@@ -5,7 +5,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ErrorScreen from "./ErrorScreen";
 
 export default {
-  title: "Components/Error Screen",
+  title: "Components/Helper Screens/Error Screen",
   component: ErrorScreen,
 } as ComponentMeta<typeof ErrorScreen>;
 

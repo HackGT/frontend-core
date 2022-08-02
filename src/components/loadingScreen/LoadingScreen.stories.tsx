@@ -5,7 +5,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import LoadingScreen from "./LoadingScreen";
 
 export default {
-  title: "Components/Loading Screen",
+  title: "Components/Helper Screens/Loading Screen",
   component: LoadingScreen,
 } as ComponentMeta<typeof LoadingScreen>;
 

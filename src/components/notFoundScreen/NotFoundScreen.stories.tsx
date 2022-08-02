@@ -5,7 +5,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import NotFoundScreen from "./NotFoundScreen";
 
 export default {
-  title: "Components/Not Found Screen",
+  title: "Components/Helper Screens/Not Found Screen",
   component: NotFoundScreen,
 } as ComponentMeta<typeof NotFoundScreen>;
 

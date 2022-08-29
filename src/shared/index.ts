@@ -1,1 +1,2 @@
-export { apiUrl, Service } from "./apiUrl/apiUrl";
+export * from "./apiUrl/apiUrl";
+export * from "./handleAxiosError/handleAxiosError";

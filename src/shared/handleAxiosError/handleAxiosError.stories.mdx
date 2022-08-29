@@ -1,0 +1,44 @@
+<Meta title="Shared/handleAxiosError" />
+
+# handleAxiosError
+
+This method appropriatlty handles the error response from an axios request. It will handle
+normal and axios errors appropriately by displaying a toast message and logging the error
+to the console. Ideally, this method should mainly be used in a try/catch statement.
+
+## Import
+
+```typescript
+import { handleAxiosError } from "@hex-labs/core";
+```
+
+## Arguments
+
+| Name  | Type  | Description         |
+| ----- | ----- | ------------------- |
+| error | Error | The error to handle |
+
+Service can be an enum of these values:
+
+## Return value
+
+No return value, but will appropriately show a Chakra UI toast message and log the error
+to the console.
+
+## Usage
+
+### Example 1
+
+This makes an axios request and handles the error with a try/catch statement.
+
+```typescript
+const chooseApplicationBranch = async () => {
+  try {
+    const response = await axios.post(
+      "https://registration.api.hexlabs.org/applications/actions/choose-application-branch"
+    );
+  } catch (error: any) {
+    handleAxiosError(error);
+  }
+};
+```

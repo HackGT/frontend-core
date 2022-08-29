@@ -1,4 +1,4 @@
-export enum Service {
+enum Service {
   USERS = "USERS",
   HEXATHONS = "HEXATHONS",
   NOTIFICATIONS = "NOTIFICATIONS",
@@ -32,7 +32,7 @@ const PRODUCTION_SERVICE_URLS = {
  * @param path The relative path URl for the service
  * @returns The complete request URL
  */
-export const apiUrl = (service: Service, path: string) => {
+const apiUrl = (service: Service, path: string) => {
   if (process.env.REACT_APP_API_ENVIRONMENT === "PRODUCTION") {
     return new URL(path, PRODUCTION_SERVICE_URLS[service]).toString();
   }
@@ -41,3 +41,5 @@ export const apiUrl = (service: Service, path: string) => {
   }
   throw new Error("Invalid API environment");
 };
+
+export { Service, apiUrl };

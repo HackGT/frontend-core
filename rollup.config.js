@@ -5,6 +5,7 @@ import { terser } from "rollup-plugin-terser";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 import dts from "rollup-plugin-dts";
+import json from "@rollup/plugin-json";
 
 const packageJson = require("./package.json");
 
@@ -29,6 +30,7 @@ export default [
         tsconfig: "./tsconfig.json",
         exclude: ["**/*.stories.tsx"],
       }),
+      json(),
       postcss(),
       terser(),
     ],

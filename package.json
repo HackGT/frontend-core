@@ -34,9 +34,11 @@
     "@emotion/styled": "^11.9.3",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.3",
     "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-docs": "^6.5.10",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-interactions": "^6.5.9",
     "@storybook/addon-links": "^6.5.9",
@@ -73,6 +75,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@storybook/addon-docs": "^6.5.9"
+    "axios": "^0.27.2"
   }
 }

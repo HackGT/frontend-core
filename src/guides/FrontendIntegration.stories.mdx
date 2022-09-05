@@ -1,0 +1,74 @@
+<Meta title="Frontend Integration" />
+
+# Frontend Integration
+
+This guide covers how to integrate a frontend application with our Google Firebase
+and Google Cloud Identity Platform authentication system. After following this guide,
+your application will be able to login a user and retrieve a user's login details.
+
+## Initial Setup
+
+First, you will need to retrieve credentials from the Google Cloud Identity
+Platform console or from a teammate.
+
+To retrieve these credentials yourself, follow these steps:
+
+1. Visit our `hexlabs-cloud` project in Google Cloud and navigate to Identity Platform.
+   Or, click on [this](https://console.cloud.google.com/customer-identity/providers?authuser=1&project=hexlabs-cloud)
+   link to navigate there directly.
+2. On the Identity Platform "Providers" tab, select the "Application Setup Details"
+   button in the top right corner.
+3. A popup will open showing the `apiKey` and `authDomain` you can copy. Note that
+   this values are not sensitive and can be committed to version control.
+
+## Code Integration
+
+You will need to install `firebase` through `yarn install firebase`. Then,
+you can use this template `App.tsx` file to setup Firebase Authentication. You will
+need to fill in the `apiKey` and `authDomain` values that you retrieved in the
+previous step.
+
+The steps are explained below in comments, but can be removed after copying.
+
+```tsx
+import { useLogin, LoadingScreen, AuthProvider } from "@hex-labs/core";
+
+// Initialized the Firebase app through the credentials provided
+export const app = initializeApp({
+  apiKey: "[Your apiKey here]",
+  authDomain: "[Your authDomain here]",
+});
+// Sets the Firebase persistence to in memory since we use cookies for session
+// management. These cookies are set by the backend on login/logout.
+setPersistence(getAuth(app), inMemoryPersistence);
+
+// By default sends axios requests with user session cookies so that the backend
+// can verify the user's identity.
+axios.defaults.withCredentials = true;
+
+export const App = () => {
+  // Retrieves the user's login state. This hook will also make requests to log
+  // the user in
+  const [loading, loggedIn] = useLogin(app);
+
+  // If loading, show a loading screen
+  if (loading) {
+    return <LoadingScreen />;
+  }
+
+  // If not loading and the user is not logged in, redirect to the login frontend
+  // with a redirect param so that the user can login and come back to the page
+  // they were on.
+  if (!loading && !loggedIn) {
+    window.location.href = `https://login.hexlabs.org?redirect=${window.location.href}`;
+  }
+
+  // Sets up the AuthProvider so that any part of the application can use the
+  // useAuth hook to retrieve the user's login details.
+  return (
+    <AuthProvider app={app}>
+      <div>Hello World!</div>
+    </AuthProvider>
+  );
+};
+```

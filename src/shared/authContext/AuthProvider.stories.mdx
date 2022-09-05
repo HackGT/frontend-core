@@ -1,0 +1,42 @@
+<Meta title="Shared/AuthProvider" />
+
+# AuthProvider
+
+Main auth provider that handles the user state and loading state. It subscribes
+to a Firebase auth observer that will update the current user value on login/logout.
+
+This provider should be used in conjunction with `useAuth` to provide user state
+to the rest of the application.
+
+## Import
+
+```typescript
+import { AuthProvider } from "@hex-labs/core";
+```
+
+## Arguments
+
+| Name | Type        | Description                                            |
+| ---- | ----------- | ------------------------------------------------------ |
+| app  | FirebaseApp | The initialized Firebase app to use for authentication |
+
+## Return value
+
+It returns a React provider component based on `AuthContext`.
+
+## Usage
+
+### Example
+
+Use the provider near the top level of your application. You can use it with
+`useAuth` to retrieve the user state information.
+
+```tsx
+export const App = () => {
+  return (
+    <AuthProvider app={app}>
+      <div>Hello World!</div>
+    </AuthProvider>
+  );
+};
+```

@@ -1,0 +1,43 @@
+<Meta title="Shared/useAuth" />
+
+# useAuth
+
+A authentication hook providers the current user's authentication state and loading
+state. It will update when user logs in or out depending on their Firebase auth state.
+
+This hook should be used in conjunction with `AuthProvider` to provide user state
+to the rest of the application.
+
+## Import
+
+```typescript
+import { AuthContext } from "@hex-labs/core";
+```
+
+## Arguments
+
+| Name | Type        | Description                                            |
+| ---- | ----------- | ------------------------------------------------------ |
+| app  | FirebaseApp | The initialized Firebase app to use for authentication |
+
+## Return value
+
+It returns an object with two fields:
+
+- `user` - The current Firebase user data if logged in. Otherwise `null`.
+- `loading` - A boolean that is true when the hook is loading the user's login
+  information
+
+## Usage
+
+### Example
+
+This hook is used to retrieve the user's uid to use for requests.
+
+```tsx
+export const Component = () => {
+  const { user } = useAuth();
+
+  return <div>Hello user: ${user.uid}</div>;
+};
+```

@@ -1,0 +1,54 @@
+<Meta title="Shared/useLogin" />
+
+# useLogin
+
+This is the main login hook that logs a user into an application. It takes
+in the Firebase app and retrieves a custom token from the api auth service. It
+also handles a callback from the login frontend through the idToken search
+parameter.
+
+This hook should be used only once in an application ideally in the `App.tsx` file.
+It can be used to determine the current user's login state.
+
+## Import
+
+```typescript
+import { useLogin } from "@hex-labs/core";
+```
+
+## Arguments
+
+| Name | Type        | Description                                            |
+| ---- | ----------- | ------------------------------------------------------ |
+| app  | FirebaseApp | The initialized Firebase app to use for authentication |
+
+## Return value
+
+It returns an array with two values:
+
+- `loading` - A boolean that is true when the hook is loading the user's login state
+- `loggedIn` - A boolean that is true when the user is logged in
+
+## Usage
+
+### Example
+
+This component checks the user's log in state and returns a loading screen while
+the hook is loading. If the user is not logged in, they are redirected to the login
+frontend.
+
+```typescript
+export const App = () => {
+  const [loading, loggedIn] = useLogin(app);
+
+  if (loading) {
+    return <LoadingScreen />;
+  }
+
+  if (!loading && !loggedIn) {
+    window.location.href = `https://login.hexlabs.org?redirect=${window.location.href}`;
+  }
+
+  return <div>Hello World!</div>;
+};
+```

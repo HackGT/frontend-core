@@ -13,9 +13,12 @@ import { apiUrl, Service } from "../apiUrl/apiUrl";
  * parameter.
  * @param app the Firebase app to use for authentication
  * @returns an array with the first element being a boolean if the user status
- * is current loading, and another boolean if the user is logged in or not
+ * is current loading, the second element an error if there was one, and the
+ * last element a boolean if the user is logged in or not
  */
-const useLogin = (app: FirebaseApp): [loading: boolean, loggedIn: boolean] => {
+const useLogin = (
+  app: FirebaseApp
+): [loading: boolean, error: any, loggedIn: boolean] => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -23,6 +26,7 @@ const useLogin = (app: FirebaseApp): [loading: boolean, loggedIn: boolean] => {
   const auth = useMemo(() => getAuth(app), [app]);
 
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -44,6 +48,7 @@ const useLogin = (app: FirebaseApp): [loading: boolean, loggedIn: boolean] => {
         searchParams.delete("idToken");
         navigate(`${location.pathname}?${searchParams.toString()}`);
       } catch (err: any) {
+        setError(err);
         setLoading(false);
       }
     };
@@ -51,7 +56,7 @@ const useLogin = (app: FirebaseApp): [loading: boolean, loggedIn: boolean] => {
     login();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return [loading, loggedIn];
+  return [loading, error, loggedIn];
 };
 
 export { useLogin };

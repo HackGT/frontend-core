@@ -37,6 +37,22 @@ value to `DEVELOPMENT` to query the local running api servers.
 
 **Ensure that you never commit any changes to this file and it always remains set to PRODUCTION**
 
+## Package Versions
+
+The new `@hex-labs/core` package requires a minimum React version of 18. Additionally, this package
+requires minimum package versions of other libraries, so you will need to install all of these
+below packages at a minimum of these versions in your `package.json`.
+
+```json
+"@chakra-ui/icons": "^2.0.9",
+"@chakra-ui/react": "^2.3.0",
+"firebase": "^9.9.0",
+"react": "^18.2.0",
+"react-dom": "^18.2.0",
+"react-router-dom": "^6.3.0",
+"react-scripts": "5.0.0"
+```
+
 ## Code Integration
 
 You will need to install `firebase` through `yarn install firebase`. Then,

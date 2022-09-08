@@ -21,6 +21,22 @@ To retrieve these credentials yourself, follow these steps:
 3. A popup will open showing the `apiKey` and `authDomain` you can copy. Note that
    this values are not sensitive and can be committed to version control.
 
+## Environment Variable
+
+In order for your application to be able to work with both production and development
+servers, you will need to set up a React environment variable. Create a `.env` file at
+the root of your project (in the same directory as `package.json`) and add these contents:
+
+```bash
+# Change to DEVELOPMENT to use local dev api server
+REACT_APP_API_ENVIRONMENT=PRODUCTION
+```
+
+Right now, the application is set to query the production databae, but you can change the
+value to `DEVELOPMENT` to query the local running api servers.
+
+**Ensure that you never commit any changes to this file and it always remains set to PRODUCTION**
+
 ## Code Integration
 
 You will need to install `firebase` through `yarn install firebase`. Then,
@@ -49,17 +65,20 @@ axios.defaults.withCredentials = true;
 export const App = () => {
   // Retrieves the user's login state. This hook will also make requests to log
   // the user in
-  const [loading, loggedIn] = useLogin(app);
+  const [loading, error, loggedIn] = useLogin(app);
 
   // If loading, show a loading screen
   if (loading) {
     return <LoadingScreen />;
   }
+  // If error, show error
+  if (error) {
+    return <ErrorScreen error={error} />;
+  }
 
-  // If not loading and the user is not logged in, redirect to the login frontend
-  // with a redirect param so that the user can login and come back to the page
-  // they were on.
-  if (!loading && !loggedIn) {
+  // If the user is not logged in, redirect to the login frontend with a redirect
+  // param so that the user can login and come back to the page they were on.
+  if (!loggedIn) {
     window.location.href = `https://login.hexlabs.org?redirect=${window.location.href}`;
   }
 

@@ -48,9 +48,9 @@ export const App = () => {
   if (error) {
     return <ErrorScreen error={error} />;
   }
-
   if (!loggedIn) {
     window.location.href = `https://login.hexlabs.org?redirect=${window.location.href}`;
+    return <LoadingScreen />;
   }
 
   return <div>Hello World!</div>;

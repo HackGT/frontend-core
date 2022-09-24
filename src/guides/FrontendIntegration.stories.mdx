@@ -18,8 +18,8 @@ To retrieve these credentials yourself, follow these steps:
    link to navigate there directly.
 2. On the Identity Platform "Providers" tab, select the "Application Setup Details"
    button in the top right corner.
-3. A popup will open showing the `apiKey` and `authDomain` you can copy. Note that
-   this values are not sensitive and can be committed to version control.
+3. A popup will open showing the `apiKey` you can copy. Note that this value is not sensitive
+   and can be committed to version control.
 
 ## Environment Variable
 
@@ -57,8 +57,8 @@ below packages at a minimum of these versions in your `package.json`.
 
 You will need to install `firebase` through `yarn install firebase`. Then,
 you can use this template `App.tsx` file to setup Firebase Authentication. You will
-need to fill in the `apiKey` and `authDomain` values that you retrieved in the
-previous step.
+need to fill in the `apiKey` value that you retrieved in the previous step. For the
+`authDomain`, use "auth.hexlabs.org".
 
 The steps are explained below in comments, but can be removed after copying.
 
@@ -68,7 +68,7 @@ import { useLogin, LoadingScreen, AuthProvider } from "@hex-labs/core";
 // Initialized the Firebase app through the credentials provided
 export const app = initializeApp({
   apiKey: "[Your apiKey here]",
-  authDomain: "[Your authDomain here]",
+  authDomain: "auth.hexlabs.org",
 });
 // Sets the Firebase persistence to in memory since we use cookies for session
 // management. These cookies are set by the backend on login/logout.

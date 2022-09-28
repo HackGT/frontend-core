@@ -24,10 +24,9 @@ import { useLogin } from "@hex-labs/core";
 
 ## Return value
 
-It returns an array with three values:
+It returns an array with two values:
 
 - `loading` - A boolean that is true when the hook is loading the user's login state
-- `error` - An error object if an error occurred in the hook
 - `loggedIn` - A boolean that is true when the user is logged in
 
 ## Usage
@@ -40,14 +39,12 @@ frontend.
 
 ```typescript
 export const App = () => {
-  const [loading, error, loggedIn] = useLogin(app);
+  const [loading, loggedIn] = useLogin(app);
 
   if (loading) {
     return <LoadingScreen />;
   }
-  if (error) {
-    return <ErrorScreen error={error} />;
-  }
+
   if (!loggedIn) {
     window.location.href = `https://login.hexlabs.org?redirect=${window.location.href}`;
     return <LoadingScreen />;

@@ -1,18 +1,22 @@
 import React, { PropsWithChildren } from "react";
-import { Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
-interface HeaderItemProps extends React.ComponentProps<"p"> {
-  show?: boolean;
-}
+interface HeaderItemProps extends React.ComponentProps<"div"> {}
 
 const HeaderItem: React.FC<PropsWithChildren<HeaderItemProps>> = ({
-  show,
   children,
   ...otherProps
 }) => (
-  <Text lineHeight="48px" {...otherProps}>
-    {children}
-  </Text>
+  <Box
+    display="flex"
+    alignItems="center"
+    justifyContent="center"
+    height="100%"
+    paddingX="20px"
+    {...otherProps}
+  >
+    <Text lineHeight="48px">{children}</Text>
+  </Box>
 );
 
 export default HeaderItem;

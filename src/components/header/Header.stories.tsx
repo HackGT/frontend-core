@@ -14,7 +14,7 @@ const Template: ComponentStory<typeof Header> = (args) => (
   <ChakraProvider>
     <Header>
       <HeaderItem>Home</HeaderItem>
-      <HeaderItem show>Login</HeaderItem>
+      <HeaderItem>Login</HeaderItem>
     </Header>
   </ChakraProvider>
 );

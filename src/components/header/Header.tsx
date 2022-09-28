@@ -22,7 +22,6 @@ const NavbarContainer = chakra(Box, {
     top: 0,
     zIndex: 100,
     display: "flex",
-    justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
     height: "64px",
@@ -48,7 +47,11 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
 
   return (
     <>
-      <NavbarContainer as="header">
+      <NavbarContainer
+        as="header"
+        justifyContent={{ base: "space-between", md: "inherit" }}
+      >
+        <HexLabsLogo />
         <IconButton
           ml={-5}
           display={{ base: "flex", md: "none" }}
@@ -57,18 +60,13 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           variant="ghost"
           aria-label="Toggle Navigation"
         />
-        <HexLabsLogo />
-        <Box>
-          <HStack spacing={10} display={{ base: "none", md: "flex" }}>
-            {props.children}
-          </HStack>
-          <HStack spacing={10} display={{ base: "flex", md: "none" }}>
-            {Array.isArray(props.children)
-              ? props.children?.map((child: any) =>
-                  child?.props?.show ? child : null
-                )
-              : props.children}
-          </HStack>
+        <Box
+          marginLeft="10px"
+          height="100%"
+          flexDirection="row"
+          display={{ base: "none", md: "flex" }}
+        >
+          {props.children}
         </Box>
       </NavbarContainer>
       <Drawer

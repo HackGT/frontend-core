@@ -44,6 +44,7 @@ requires minimum package versions of other libraries, so you will need to instal
 below packages at a minimum of these versions in your `package.json`.
 
 ```json
+"axios": "^0.27.0"
 "@chakra-ui/icons": "^2.0.9",
 "@chakra-ui/react": "^2.3.0",
 "firebase": "^9.9.0",
@@ -63,6 +64,9 @@ need to fill in the `apiKey` value that you retrieved in the previous step. For 
 The steps are explained below in comments, but can be removed after copying.
 
 ```tsx
+import axios from "axios";
+import { initializeApp } from "firebase/app";
+import { setPersistence, getAuth, inMemoryPersistence } from "firebase/auth";
 import { useLogin, LoadingScreen, AuthProvider } from "@hex-labs/core";
 
 // Initialized the Firebase app through the credentials provided

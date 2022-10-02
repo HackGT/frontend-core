@@ -8,8 +8,8 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
-  IconButton,
   HStack,
+  IconButton,
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -40,6 +40,7 @@ const SidebarContainer = chakra(Stack, {
 
 export interface HeaderProps {
   children: React.ReactNode[] | React.ReactNode;
+  rightItem?: React.ReactNode[] | React.ReactNode;
 }
 
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
@@ -47,26 +48,36 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
 
   return (
     <>
-      <NavbarContainer
-        as="header"
-        justifyContent={{ base: "space-between", md: "inherit" }}
-      >
-        <HexLabsLogo />
-        <IconButton
-          ml={-5}
-          display={{ base: "flex", md: "none" }}
-          onClick={onOpen}
-          icon={<HamburgerIcon w={5} h={5} />}
-          variant="ghost"
-          aria-label="Toggle Navigation"
-        />
-        <Box
-          marginLeft="10px"
-          height="100%"
-          flexDirection="row"
-          display={{ base: "none", md: "flex" }}
-        >
-          {props.children}
+      <NavbarContainer as="header" justifyContent="space-between">
+        <Box display="flex" justifyContent="space-around" alignItems="center">
+          <HexLabsLogo />
+          <HStack
+            marginLeft="10px"
+            height="100%"
+            display={{ base: "none", md: "flex" }}
+            spacing={0}
+          >
+            {props.children}
+          </HStack>
+        </Box>
+        <Box>
+          <IconButton
+            display={{ base: "flex", md: "none" }}
+            onClick={onOpen}
+            icon={<HamburgerIcon w={5} h={5} />}
+            variant="ghost"
+            aria-label="Toggle Navigation"
+          />
+          {props.rightItem && (
+            <HStack
+              marginLeft="10px"
+              height="100%"
+              display={{ base: "none", md: "flex" }}
+              spacing={0}
+            >
+              {props.rightItem}
+            </HStack>
+          )}
         </Box>
       </NavbarContainer>
       <Drawer
@@ -84,7 +95,10 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
             <CloseButton w={10} h={10} onClick={onClose} />
           </DrawerHeader>
           <DrawerBody>
-            <SidebarContainer>{props.children}</SidebarContainer>
+            <SidebarContainer>
+              {props.children}
+              {props.rightItem}
+            </SidebarContainer>
           </DrawerBody>
         </DrawerContent>
       </Drawer>

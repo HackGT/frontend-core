@@ -12,7 +12,7 @@ const HeaderItem: React.FC<PropsWithChildren<HeaderItemProps>> = ({
     alignItems="center"
     justifyContent="center"
     height="100%"
-    paddingX="20px"
+    paddingX="15px"
     {...otherProps}
   >
     <Text lineHeight="48px">{children}</Text>

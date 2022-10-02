@@ -12,9 +12,9 @@ export default {
 
 const Template: ComponentStory<typeof Header> = (args) => (
   <ChakraProvider>
-    <Header>
+    <Header rightItem={<HeaderItem>Sign Out</HeaderItem>}>
       <HeaderItem>Home</HeaderItem>
-      <HeaderItem>Login</HeaderItem>
+      <HeaderItem>Profile</HeaderItem>
     </Header>
   </ChakraProvider>
 );

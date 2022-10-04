@@ -101,7 +101,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
             <CloseButton w={10} h={10} onClick={onClose} />
           </DrawerHeader>
           <DrawerBody>
-            <SidebarContainer>
+            <SidebarContainer onClick={onClose}>
               {props.children}
               {props.rightItemMobile && props.rightItemMobile}
             </SidebarContainer>

@@ -12,7 +12,10 @@ export default {
 
 const Template: ComponentStory<typeof Header> = (args) => (
   <ChakraProvider>
-    <Header rightItem={<HeaderItem>Sign Out</HeaderItem>}>
+    <Header
+      rightItem={<HeaderItem>Sign Out</HeaderItem>}
+      rightItemMobile={<HeaderItem>Sign Out</HeaderItem>}
+    >
       <HeaderItem>Home</HeaderItem>
       <HeaderItem>Profile</HeaderItem>
     </Header>

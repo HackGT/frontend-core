@@ -49,7 +49,12 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   return (
     <>
       <NavbarContainer as="header" justifyContent="space-between">
-        <Box display="flex" justifyContent="space-around" alignItems="center">
+        <Box
+          display="flex"
+          justifyContent="space-around"
+          alignItems="center"
+          height="100%"
+        >
           <HexLabsLogo />
           <HStack
             marginLeft="10px"
@@ -60,7 +65,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
             {props.children}
           </HStack>
         </Box>
-        <Box>
+        <Box display="flex" alignItems="center" height="100%">
           <IconButton
             display={{ base: "flex", md: "none" }}
             onClick={onOpen}

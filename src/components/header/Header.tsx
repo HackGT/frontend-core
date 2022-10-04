@@ -41,6 +41,7 @@ const SidebarContainer = chakra(Stack, {
 export interface HeaderProps {
   children: React.ReactNode[] | React.ReactNode;
   rightItem?: React.ReactNode[] | React.ReactNode;
+  rightItemMobile?: React.ReactNode[] | React.ReactNode;
 }
 
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
@@ -102,7 +103,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           <DrawerBody>
             <SidebarContainer>
               {props.children}
-              {props.rightItem}
+              {props.rightItemMobile && props.rightItemMobile}
             </SidebarContainer>
           </DrawerBody>
         </DrawerContent>

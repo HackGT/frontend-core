@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 interface HeaderItemProps extends React.ComponentProps<"div"> {}
 
@@ -12,10 +12,11 @@ const HeaderItem: React.FC<PropsWithChildren<HeaderItemProps>> = ({
     alignItems="center"
     justifyContent="center"
     height="100%"
+    minHeight="40px"
     paddingX="15px"
     {...otherProps}
   >
-    <Text lineHeight="48px">{children}</Text>
+    {children}
   </Box>
 );
 

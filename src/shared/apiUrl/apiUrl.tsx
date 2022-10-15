@@ -6,6 +6,7 @@ enum Service {
   FILES = "FILES",
   AUTH = "AUTH",
   EXPO = "EXPO",
+  HARDWARE = "HARDWARE",
 }
 
 const DEVELOPMENT_SERVICE_URLS = {
@@ -16,6 +17,7 @@ const DEVELOPMENT_SERVICE_URLS = {
   [Service.FILES]: "http://localhost:8005",
   [Service.AUTH]: "http://localhost:8006",
   [Service.EXPO]: "http://localhost:8007",
+  [Service.HARDWARE]: "http://localhost:8008",
 };
 
 const PRODUCTION_SERVICE_URLS = {
@@ -26,6 +28,7 @@ const PRODUCTION_SERVICE_URLS = {
   [Service.FILES]: "https://files.api.hexlabs.org",
   [Service.AUTH]: "https://auth.api.hexlabs.org",
   [Service.EXPO]: "https://expo.api.hexlabs.org",
+  [Service.HARDWARE]: "https://hardware.api.hexlabs.org",
 };
 
 /**

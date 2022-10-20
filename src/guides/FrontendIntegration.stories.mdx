@@ -107,16 +107,13 @@ axios.defaults.withCredentials = true;
 export const App = () => {
   // Retrieves the user's login state. This hook will also make requests to log
   // the user in
-  const [loading, error, loggedIn] = useLogin(app);
+  const [loading, loggedIn] = useLogin(app);
 
   // If loading, show a loading screen
   if (loading) {
     return <LoadingScreen />;
   }
-  // If error, show error
-  if (error) {
-    return <ErrorScreen error={error} />;
-  }
+
   // If the user is not logged in, redirect to the login frontend with a redirect
   // param so that the user can login and come back to the page they were on.
   if (!loggedIn) {

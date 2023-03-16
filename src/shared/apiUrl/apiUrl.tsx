@@ -7,6 +7,7 @@ enum Service {
   AUTH = "AUTH",
   EXPO = "EXPO",
   HARDWARE = "HARDWARE",
+  FINANCE = "FINANCE",
 }
 
 const DEVELOPMENT_SERVICE_URLS = {
@@ -18,6 +19,7 @@ const DEVELOPMENT_SERVICE_URLS = {
   [Service.AUTH]: "http://localhost:8006",
   [Service.EXPO]: "http://localhost:8007",
   [Service.HARDWARE]: "http://localhost:8008",
+  [Service.FINANCE]: "http://localhost:8009",
 };
 
 const PRODUCTION_SERVICE_URLS = {
@@ -29,6 +31,7 @@ const PRODUCTION_SERVICE_URLS = {
   [Service.AUTH]: "https://auth.api.hexlabs.org",
   [Service.EXPO]: "https://expo.api.hexlabs.org",
   [Service.HARDWARE]: "https://hardware.api.hexlabs.org",
+  [Service.FINANCE]: "https://finance.api.hexlabs.org",
 };
 
 /**

@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.52](https://github.com/HackGT/frontend-core/compare/v1.0.51...v1.0.52) (2023-03-16)
+
 ### [1.0.51](https://github.com/HackGT/frontend-core/compare/v1.0.50...v1.0.51) (2022-10-15)
 
 ### [1.0.50](https://github.com/HackGT/frontend-core/compare/v1.0.49...v1.0.50) (2022-10-12)

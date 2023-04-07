@@ -11,6 +11,7 @@ import {
   HStack,
   IconButton,
   Stack,
+  Link,
   useDisclosure,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
@@ -56,7 +57,9 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           alignItems="center"
           height="100%"
         >
-          <HexLabsLogo />
+          <Link href="/">
+            <a style={{ textDecoration: 'none' }}><HexLabsLogo /></a>
+          </Link>
           <HStack
             marginLeft="10px"
             height="100%"
